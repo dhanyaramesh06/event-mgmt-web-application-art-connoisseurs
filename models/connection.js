@@ -1,4 +1,4 @@
-var connection = function(conID, conName, conCategory, conDetails, conLocation, conDate, conFromTime, conToTime, conHostedBy, img)
+var connection = function(conID, conName, conCategory, conDetails, conLocation, conDate, conFromTime, conToTime, conHostedBy)
 {
   var conModel = {
     id : '' + conID,
@@ -9,10 +9,9 @@ var connection = function(conID, conName, conCategory, conDetails, conLocation, 
     date : '' + conDate,
     fromTime : '' + conFromTime,
     toTime : '' + conToTime,
-    hostedBy : '' + conHostedBy,
-    image : img
+    hostedBy : '' + conHostedBy
   }
   return conModel;
 }
 
-module.exports.connectionModel = connection
+module.exports = connection

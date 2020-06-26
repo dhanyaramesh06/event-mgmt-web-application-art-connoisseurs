@@ -10,24 +10,31 @@ router.use(session({
 }));
 
 var utility = require('../utility/connectionDB')
-var ctgy = utility.category
+var ctgy;
 console.log("Inside connections controller");
 
-router.get('/connection', function (req, res) {
+router.get('/connection', async function (req, res) {
+    console.log("Inside connection router");
     var query = req.query;
-    if(Object.keys(query).length === 0){
-      var result = utility.getConnections();
+    console.log(query);
+    ctgy = await utility.getCategory();
+    if(Object.keys(query).length == 0){
+      var result = await utility.getConnections();
       res.render('connections', {connections:result, category:ctgy, userName: req.session.userName, loggedIn:(req.session.users) ? true : false})
     }
     else{
-        var result = utility.getConnection(query.id);
+        var result = await utility.getConnection(query.id);
+        console.log(result);
         res.render('connection', {connection:result, userName: req.session.userName, loggedIn:(req.session.users) ? true : false })
     }
 });
 
-router.get('/connections', function (req, res) {
+router.get('/connections', async function (req, res) {
     console.log("Inside connections router");
-    var result = utility.getConnections();
+    ctgy = await utility.getCategory();
+    var result = await utility.getConnections();
+    console.log(result);
+    console.log(ctgy);
     res.render('connections', {connections:result, category:ctgy, userName: req.session.userName, loggedIn:(req.session.users) ? true : false})
 });
 

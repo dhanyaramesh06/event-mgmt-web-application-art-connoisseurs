@@ -1,6 +1,7 @@
-var userConn = function(conId, conName, category, rsvp)
+var userConn = function(userId, conId, conName, category, rsvp)
 {
   var userConnModel = {
+    userId : '' + userId,
     conId : '' + conId,
     conName : '' + conName,
     category : '' + category,
@@ -9,4 +10,4 @@ var userConn = function(conId, conName, category, rsvp)
   return userConnModel;
 }
 
-module.exports.userConnection = userConn
+module.exports = userConn

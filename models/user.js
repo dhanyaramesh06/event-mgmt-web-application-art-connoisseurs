@@ -15,4 +15,4 @@ var user = function(uid, fname, lname, email, addr1, addr2, city, state, zip, co
   return usermodel;
 }
 
-module.exports.userModel = user
+module.exports = user

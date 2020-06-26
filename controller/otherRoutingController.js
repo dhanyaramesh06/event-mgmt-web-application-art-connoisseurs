@@ -3,6 +3,10 @@
 var express = require('express');
 var router = express.Router();
 var session = require('express-session');
+var bodyParser = require('body-parser');
+var urlEncodedParser = bodyParser.urlencoded({ extended: false });
+var connectionDB = require('../utility/connectionDB');
+var userConnectionDB = require('../utility/userConnectionDB');
 
 router.use(session({
     secret: 'UserConnectionSession',
@@ -31,13 +35,14 @@ router.get('/about', function (req, res) {
     res.render('about', {loggedIn: (req.session.users) ? true: false, userName: req.session.userName})
 });
 
-router.post('/saveNewConnection', function (req, res) {
-    if(Object.keys(req.body).length === 0){
+router.post('/*', urlEncodedParser, async function (req, res) {
+    if(Object.keys(req.body).length == 0){
         res.render('newConnection', {loggedIn: (req.session.users) ? true: false, userName: req.session.userName});
     }
     else{
-        console.log(req.body);
-        res.render('newConnection', {loggedIn: (req.session.users) ? true: false, userName: req.session.userName});
+        //console.log(req.body);
+        await connectionDB.addConnection(req.body);
+        res.redirect('/connections');
     }
 });
 
