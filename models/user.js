@@ -1,3 +1,4 @@
+//structure of user object
 var user = function(uid, pwd, fname, lname, email, addr1, addr2, city, state, zip, country)
 {
   var usermodel = {

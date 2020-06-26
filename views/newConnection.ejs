@@ -13,12 +13,13 @@
 
 			<main>
 				<div class = "content">
+					<% if (modifyConnection == null) { %>
 					<div class = "form_section">
           	<form action = "/saveNewConnection" method = "POST">
 							<label for = "topic">Topic:</label>
           		<input type = "text" id = "topic" name = "topic" placeholder = "Category"> &nbsp;&nbsp; <label for = "topicid">Topic Id:</label><input type = "text" id = "topicid" name = "topicId" placeholder = "Connection Id"><br><br>
 							<label for = "name">Name:</label>
-          		<input type = "text" id = "name" name = "name" placeholder = "Connection Name"> &nbsp;&nbsp; <label for = "host">Host:</label> &nbsp;&nbsp; <input type = "text" id = "host" name = "host" placeholder = "Host"><br><br>
+          		<input type = "text" id = "name" name = "name" placeholder = "Connection Name"> &nbsp;&nbsp; <label for = "host">Host:</label> &nbsp;&nbsp; <input type = "text" id = "host" name = "host" placeholder = "Host" value = "<%= userName+" "+lastName %>" readonly = "readonly"><br><br>
 							<label for = "when">When:</label>
 							<input type = "date" id = "when" name = "when"><br><br>
 							<label for = "where">Where:</label>
@@ -27,6 +28,7 @@
 							<input type = "time" id = "from" name = "from"> &nbsp; <label for = "to">To:</label> <input type = "time" id = "to" name = "to"><br><br>
 							<label for = "details">Details:</label>
 							<textarea id = "details" name="details" rows="4" cols="200" placeholder="Description"></textarea><br><br>
+							<input type = "hidden" name = "_csrf" value = "<%= csrfToken %>">
             	<input type="submit" value="Create Connection">
           	</form>
 					</div>
@@ -36,6 +38,38 @@
 								<p> <%= item.msg %> </p> <br>
 						<% })} %>
 					</div>
+					<% } else { %>
+						<div class = "form_section">
+	          	<form action = "/editConnection" method = "POST">
+								<label for = "topic">Topic:</label>
+	          		<input type = "text" id = "topic" name = "topic" placeholder = "Category" value = "<%= modifyConnection.category %>" > &nbsp;&nbsp;
+								<label for = "topicid">Topic Id:</label>
+								<input type = "text" id = "topicid" name = "topicId" placeholder = "Connection Id" value = "<%= modifyConnection.id %>" readonly = "readonly" ><br><br>
+								<label for = "name">Name:</label>
+	          		<input type = "text" id = "name" name = "name" placeholder = "Connection Name" value = "<%= modifyConnection.name %>"> &nbsp;&nbsp;
+								<label for = "host">Host:</label> &nbsp;&nbsp;
+								<input type = "text" id = "host" name = "host" placeholder = "Host" value = "<%= modifyConnection.hostedBy %>" readonly = "readonly" ><br><br>
+								<label for = "when">When:</label>
+								<input type = "date" id = "when" name = "when" value = <%= date %>> <br><br>
+								<label for = "where">Where:</label>
+								<input type = "text" id = "where" name = "where" placeholder = "Location" value = "<%= modifyConnection.location %>"> <br><br>
+								<label for = "from">From:</label>
+								<input type = "time" id = "from" name = "from" value = <%= modifyConnection.fromTime %>> &nbsp;
+								<label for = "to">To:</label>
+								 <input type = "time" id = "to" name = "to" value = <%= modifyConnection.toTime %>> <br><br>
+								<label for = "details">Details:</label>
+								<textarea id = "details" name="details" rows="4" cols="200" placeholder="Description"><%= modifyConnection.details %></textarea><br><br>
+								<input type = "hidden" name = "_csrf" value = "<%= csrfToken %>">
+	            	<input type="submit" value="Update Connection">
+	          	</form>
+						</div>
+						<div class = "errors">
+							<% if(error.length != 0){
+								error.forEach(function(item, index){ %>
+									<p> <%= item.msg %> </p> <br>
+							<% })} %>
+						</div>
+					<% } %>
 				</div>
       </main>
 

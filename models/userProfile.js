@@ -1,3 +1,4 @@
+//structure of userProfile object and functions associated to user profile
 var conObj = require('../utility/connectionDB')
 var userObj = require('../utility/userDB')
 var userConObj = require('../models/userConnection')
@@ -14,14 +15,6 @@ router.use(session({
 
 var users = userObj.getAllUsers();
 console.log(users);
-// var defaultUserCon = userObj.getDefaultUserCon();
-// console.log(defaultUserCon);
-
-//associating each user to it's default connections
-// users[0].userProfile = userProfile(users[0].userId, [defaultUserCon[0], defaultUserCon[1]]);
-// users[1].userProfile = userProfile(users[1].userId, [defaultUserCon[2], defaultUserCon[3]]);
-//
-// console.log(users[0].userProfile);
 
 function userProfile(userId, userConnections){
   console.log("Inside user profile");
@@ -57,7 +50,6 @@ async function removeConnection(userId, conId){
 //updating an existing connection in user profile upon clicking of update button
 async function updateConnection(conId, rsvp, userConnections, userId){
   console.log("Inside update connection");
-  //console.log(`Connection id ${conId} updated`);
   //checks if rsvp has any one of the three values -- if rsvp in URL is tampered manually changes will not be made
   if(rsvp == "Yes" || rsvp == "No" || rsvp == "Maybe"){
     await userConnectionDB.updateRsvp(conId, userId, rsvp);

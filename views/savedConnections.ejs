@@ -13,16 +13,20 @@
 
 			<main>
 				<div class = "content">
+				<div class = "content1">
 					<div class = "who_connection">
-						<h2> <%= userName %>'s Connections </h2>
+						<h4> <%= userName %>'s RSPVied Connections </h4>
 					</div>
 					<div class ="tab">
+						<% if (userConnections == undefined || userConnections.length == 0) { %>
+							<p> No Connections to display </p>
+							<% } else { %>
 					<table>
 						<thead>
 							<tr>
 								<th> Connection </th>
 								<th> Category </th>
-								<th> Going? </th>
+								<th> RSVP </th>
 								<th>  </th>
 							</tr>
 						</thead>
@@ -40,8 +44,42 @@
 							<% } %>
 						</tbody>
 					</table>
+					<% } %>
 					</div>
 				</div>
+				<div class = "content2">
+				<div class = "who_connection">
+					<h4> Connections hosted by <%= userName %> </h4>
+				</div>
+				<div class ="tab">
+					<% if (userHostConnections == undefined || userHostConnections.length == 0) { %>
+						<p> No Connections to display </p>
+						<% } else { %>
+				<table>
+					<thead>
+						<tr>
+							<th> Connection </th>
+							<th> Category </th>
+							<th>  </th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for(var i = 0; i < userHostConnections.length; i++) { %>
+					<tr>
+						<td> <%= userHostConnections[i].name %> </td>
+						<td> <%= userHostConnections[i].category %> </td>
+						<td>
+							<button class = "update" onclick="location.href='/newConnection?con=<%= JSON.stringify(userHostConnections[i])%>'"> Update </button>
+							<button class = "delete" onclick="location.href='/savedConnections/deleteConnection?conId=<%= userHostConnections[i].id %>'"> Delete </button>
+						</td>
+					</tr>
+						<% } %>
+					</tbody>
+				</table>
+				<% } %>
+				</div>
+			</div>
+		</div>
 			</main>
 
 			<% include partials/footer.ejs %>

@@ -22,6 +22,9 @@
 // categoryDetails.push(conn);
 // conn = conModel.connectionModel("workshop4", "Art Cubs - Creative Hunt", category[1], "Art Cubs is a venture by The Art Connoisseurs to spike interest in art among young children. At their budding age, our courses will help develop their motor skills, patience and overall personalities. When the creativity of children is tapped at an early age, they have the opportunity of understanding the different nuances in the world of art and can choose to take it up as a hobby or professionally later in their lives.", "Charlotte Convention Center", "Saturday, November 2,2019", "9:30am", "4:00pm", "Gogi Saroj", "../assets/image/artCubs.png");
 // categoryDetails.push(conn);
+
+//contains connection to artConnoisseurs database and handles all transactions for connections collection
+
 var connection = require('../models/connection')
 var mongoose = require('mongoose');
 var dateFormat = require('dateformat');
@@ -47,11 +50,13 @@ var connectionSchema = new mongoose.Schema({
 
 var connections = mongoose.model('connections', connectionSchema);
 
+//returns all connections available
 async function getConnections(){
     var allConnections = await connections.find();
     return allConnections;
 }
 
+//function that fetches a connection from db based on its id
 async function getConnection(conid){
   var oneConnection = await connections.findOne({"id": conid}, function(err, result){
     return result;
@@ -59,11 +64,13 @@ async function getConnection(conid){
   return oneConnection;
 }
 
+//function that returns all the categories available
 async function getCategory(){
     var category = await connections.distinct("category");
     return category;
 }
 
+//helps in adding a new connection to the database
 async function addConnection(newCon){
   var date = newCon.when;
   var newConnection = new connections({"id": newCon.topicId, "name": newCon.name, "category": newCon.topic, "details": newCon.details, "location": newCon.where, "date": dateFormat(date, "fullDate"), "fromTime": newCon.from, "toTime": newCon.to, "hostedBy": newCon.host});
@@ -71,6 +78,8 @@ async function addConnection(newCon){
   await newConnection.save();
 }
 
+//function that checks if a connection id already exists
+//helps in having unique connection id during the creation of new connection
 async function checkConnection(newCon){
   console.log("Inside check connection");
   var con = await connections.find({"id": newCon.topicId});
@@ -81,10 +90,41 @@ async function checkConnection(newCon){
   return false;
 }
 
+//function that fetches ist of connections hosted by a particular user
+async function getConnectionByHost(name){
+  console.log("Inside get connection by host");
+  console.log(name);
+  var con = await connections.find({"hostedBy": name});
+  console.log(con);
+  return con;
+}
+
+//function that enables deleting a connection based on it's id
+async function deleteConnectionById(conid){
+  console.log("Inside delete connection by id");
+  console.log(conid);
+  await connections.deleteOne({"id": conid}, function(err, data){
+    console.log(`Deleted connection with id:${conid}`);
+  });
+}
+
+//function that enables updating connection details by host
+async function modifyConnection(con){
+  console.log("Inside modify host's connection");
+  console.log(con);
+  var date = con.when;
+  await connections.updateOne({"id": con.topicId},{$set: {"name": con.name, "category": con.topic, "details": con.details, "location": con.where, "date": dateFormat(date, "fullDate"), "fromTime": con.from, "toTime": con.to, "hostedBy": con.host}}, function(err, data){
+    console.log('connection updated successfully by host'+JSON.stringify(data));
+  });
+}
+
 module.exports = {
     getConnection :getConnection,
     getConnections :getConnections,
     getCategory :getCategory,
     addConnection :addConnection,
-    checkConnection :checkConnection
+    checkConnection :checkConnection,
+    getConnectionByHost :getConnectionByHost,
+    deleteConnectionById :deleteConnectionById,
+    modifyConnection :modifyConnection
 }

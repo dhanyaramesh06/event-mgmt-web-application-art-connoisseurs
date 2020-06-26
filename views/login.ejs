@@ -20,6 +20,7 @@
             <br><br>
 						<i class = "fa fa-lock"></i> <input type = "password" name = "pwd" placeholder = "Password">
 						<br><br>
+						<input type = "hidden" name = "_csrf" value = "<%= csrfToken %>">
 						<% if(error.length != 0){
 									error.forEach(function(item, index){ %>
 						<p> <%= item.msg %> </p>

@@ -1,3 +1,4 @@
+//contains connection to artConnoisseurs database and handles all transactions for userconnections collection
 var connection = require('../models/connection')
 var userConn = require('../models/userConnection')
 var connectionDB = require('../utility/connectionDB')
@@ -21,6 +22,7 @@ var userConnectionSchema = new mongoose.Schema({
 
 var userconnections = mongoose.model('userconnections', userConnectionSchema);
 
+//returns the user profile from userconnections based on user id
 async function getUserProfile(uid){
   console.log("inside get user profile");
   console.log(uid);
@@ -32,6 +34,7 @@ async function getUserProfile(uid){
     return oneUserProfile;
 }
 
+//function that enables updating a rsvpied connection
 async function updateRsvp(conid, uid, rsvp){
   console.log("inside update rsvp");
   await userconnections.updateOne({userId: uid, conId: conid}, {$set : {rsvp: rsvp}}, function(err, data){
@@ -39,6 +42,7 @@ async function updateRsvp(conid, uid, rsvp){
   });
 }
 
+//function that supports adding a connection along with rsvp
 async function addRsvp(uid, conid, connName, category, rsvp){
   console.log("inside add rsvp");
   var createUserConn = new userconnections({"userId": uid, "conId": conid, "conName": connName, "category": category, "rsvp": rsvp});
@@ -46,6 +50,7 @@ async function addRsvp(uid, conid, connName, category, rsvp){
   await createUserConn.save();
 }
 
+//function that supports deleting a rsvpied connection
 async function deleteUserConnection(uid, conid){
   console.log("inside delete user connection");
     await userconnections.deleteOne({userId: uid, conId: conid}, function(err, data){
@@ -53,16 +58,18 @@ async function deleteUserConnection(uid, conid){
     });
 }
 
-// async function addConnection(newCon){
-//   var newConnection = new connectionDB.connections({id: newCon.topicId, name: newCon.name, category: newCon.topic, details: newCon.details, location: newCon.where, date: newCon.when, fromTime: newCon.from, toTime: newCon.to, hostedBy: newCon.host});
-//   console.log(newConnection);
-//   await newConnection.save();
-// }
+//function that supports removing a rsvpied connection from other user's profile if the connection's host deletes them
+async function deleteConnection(conid){
+  console.log("Deleting the connection from user profile who have shared this");
+    await userconnections.deleteMany({conId: conid}, function(err, data){
+      console.log(`Deleted connection with id:${conid} for all users who rsvpied for this`);
+    });
+}
 
 module.exports = {
     getUserProfile :getUserProfile,
     updateRsvp :updateRsvp,
     addRsvp :addRsvp,
-    deleteUserConnection :deleteUserConnection
-    //addConnection :addConnection
+    deleteUserConnection :deleteUserConnection,
+    deleteConnection :deleteConnection
 }

@@ -1,3 +1,4 @@
+//structure of userConnection object
 var userConn = function(userId, conId, conName, category, rsvp)
 {
   var userConnModel = {

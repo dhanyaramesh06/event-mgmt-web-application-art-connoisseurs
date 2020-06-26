@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset = "UTF-8">
+			<title>Sign Up</title>
+			<link rel="stylesheet" type="text/css" href="/assets/basicStyle.css">
+      <link rel="stylesheet" type="text/css" href="/assets/signup.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		</head>
+		<body>
+      <% include partials/header.ejs %>
+			<% include partials/navigation.ejs %>
+
+			<main>
+				<div class = "content">
+        <div class = "signup_form">
+          <p> Please fill in this form to create an account </p><br>
+          <form action = "/saveNewUser" method = "POST">
+
+            <label for = "fname">Name: </label>
+            <input type = "text" id = "fname" name = "fname" placeholder = "First Name"> &nbsp;&nbsp; <input type = "text" id = "lname" name = "lname" placeholder = "Last Name"><br><br>
+            <label for = "email">Email: </label>
+            <input type = "text" id = "email" name = "email" placeholder = "Email ID"> &nbsp;&nbsp;
+            <label for = "userid">User ID: </label>
+            <input type = "text" id = "userid" name = "userid" placeholder = "Enter user id"> <br><br>
+            <label for = "address1">Address: </label>
+            <input type = "text" id = "address1" name = "address1" placeholder = "Street Address Line 1"><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type = "text" id = "address2" name = "address2" placeholder = "Street Address Line 2"><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type = "text" id = "city" name = "city" placeholder = "City"> &nbsp;&nbsp; <input type = "text" id = "state" name = "state" placeholder = "State/Province"><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type = "text" id = "zip" name = "zip" placeholder = "Postal/Zip Code"> &nbsp;&nbsp; <input type = "text" id = "country" name = "country" placeholder = "Country"><br><br>
+            <label for = "pwd">Password: </label>
+            <input type = "password" id = "pwd" name = "pwd" placeholder = "Enter Password"> <br><br>
+						<input type = "hidden" name = "_csrf" value = "<%= csrfToken %>">
+            <button class="submit"> Register </button>
+          </form>
+        </div>
+				<div class = "errors">
+					<% if(error.length != 0){
+						error.forEach(function(item, index){ %>
+							<p> <%= item.msg %> </p> <br>
+					<% })} %>
+				</div>
+				</div>
+      </main>
+
+      <% include partials/footer.ejs %>
+    </body>
+
+  </html>

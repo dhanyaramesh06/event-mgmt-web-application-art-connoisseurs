@@ -1,12 +1,24 @@
 @charset "UTF-8";
 
-.who_connection h2{
-	margin-left: 130px;
+.content1{
+width: 50%;
+background-color: #e6e7e9;
+margin:0;
+height: 356px;
+display: flex;
+}
+
+.content2{
+width: 50%;
+background-color: #e6e7e9;
+margin:0;
+height: 356px;
+display: flex;
 }
 
 .tab{
-	margin-top: 70px;
-	margin-left: -130px;
+	margin-top: 60px;
+	margin-left: -200px;
 }
 
 .tab table{
@@ -15,12 +27,12 @@
 
 table, th,td {
   border: 1px solid black;
-  padding: 10px 15px;
+  padding: 5px 10px;
   width: auto;
 }
 
 th {
-	height: 50px;
+	height: 5px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -29,9 +41,9 @@ th {
   background-color: black;
   border: none;
   color: white;
-  padding: 5px 15px;
+  padding: 0px 3px;
   text-align: center;
-  font-size: 16px;
+  font-size: 13px;
   cursor: pointer;
 }
 
@@ -39,8 +51,8 @@ th {
   background-color: black;
   border: none;
   color: white;
-  padding: 5px 15px;
+  padding: 0px 3px;
   text-align: center;
-  font-size: 16px;
+  font-size: 13px;
   cursor: pointer;
 }

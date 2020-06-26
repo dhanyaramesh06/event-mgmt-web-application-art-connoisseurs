@@ -1,3 +1,4 @@
+//structure of connection object
 var connection = function(conID, conName, conCategory, conDetails, conLocation, conDate, conFromTime, conToTime, conHostedBy)
 {
   var conModel = {

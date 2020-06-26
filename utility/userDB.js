@@ -16,8 +16,12 @@
 // user1.userProfile = userProfileObj.userProfile("jroy2", [userCon1, userCon2]);
 // user2.userProfile = userProfileObj.userProfile("akaur1", [userCon3, userCon4]);
 //userProfileObj.userProfile(1,2);
+
+//contains connection to artConnoisseurs database and handles all transactions for users collection
+
 var user = require('../models/user')
 var mongoose = require('mongoose');
+var passwordHash = require('../utility/PasswordHashing');
 mongoose.connect('mongodb://localhost/artConnoisseurs', {useNewUrlParser: true});
 
 var db = mongoose.connection;
@@ -28,7 +32,7 @@ db.once('open', function() {
 
 var userSchema = new mongoose.Schema({
     userId: {type: String},
-    password: {type: String},
+    password: {type: Object},
     firstName: {type: String},
     lastName: {type: String},
     emailAddress: {type: String},
@@ -42,24 +46,51 @@ var userSchema = new mongoose.Schema({
 
 var users = mongoose.model('users', userSchema);
 
+//returns all the registered users of the application
 async function getAllUsers(){
     var allUsers = await users.find();
     return allUsers;
 }
 
+//returns the registered user based on user id
 async function getUser(id){
     var oneUser = await users.findOne({userId: id});
     return oneUser;
 }
 
+//verifies password correctness - helps during login credentials validation
 async function checkUser(user){
   console.log("Inside check user");
-  var usr = await users.find({userId: user.uname, password: user.pwd});
+  var usr = await users.find({userId: user.uname});
   console.log(usr);
-  if(usr.length == 0){
+  console.log(usr[0].password);
+  var decryptedPwd = passwordHash.decryptPwd(usr[0].password);
+  console.log(decryptedPwd);
+  if(usr.length == 0 || decryptedPwd != user.pwd){
     return false;
   }
   return true;
 }
 
-module.exports = {getAllUsers, getUser, checkUser};
+//verifies if a user id already exists in DB -- helps during signup
+async function checkUserID(user){
+  console.log("Inside check if user ID exists");
+  var usr = await users.find({userId: user.userid});
+  console.log(usr);
+  if(usr.length == 0){
+    return true;
+  }
+  return false;
+}
+
+//adds a new user to the users collection
+async function addUser(user){
+  console.log("Inside add new user");
+  var encryptedPwd = passwordHash.encryptPwd(user.pwd);
+  console.log("encrypted password: "+encryptedPwd);
+  var newUser = new users({"userId": user.userid, "password": encryptedPwd, "firstName": user.fname, "lastName": user.lname, "emailAddress": user.email, "address1": user.address1, "address2": user.address2, "city": user.city, "state": user.state, "zipcode": user.zip, "country": user.country});
+  console.log(newUser);
+  await newUser.save();
+}
+
+module.exports = {getAllUsers, getUser, checkUser, checkUserID, addUser};

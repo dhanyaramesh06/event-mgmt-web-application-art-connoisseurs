@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.signup_form {
+  background-color: #e6e7e9;
+  margin-top: 0px;
+  padding: 5px;
+  float: left;
+  width: 60%;
+  font-family: Bookman Old Style;
+  justify-content: flex-start;
+  display: inline-block;
+}
+
+.errors {
+  background-color: #e6e7e9;
+  margin-top: 10px;
+  padding: 5px;
+  float: right;
+  width: 40%;
+  text-align: center;
+  align-items: center;
+  font-family: Bookman Old Style;
+  justify-content: center;
+  display: inline-block;
+  color: Red;
+  font-size: 11px;
+}
+
+.signup_form p {
+  font-family: Arial Narrow;
+  font-weight: bold;
+}
+
+.login_form p {
+  color: Red;
+}
+
+.submit{
+  background-color: black;
+  border-radius: 15px;
+  color: white;
+  padding: 0px 10px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+input[type=text] {
+  width: 20%;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+input[type=password] {
+  width: 20%;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
