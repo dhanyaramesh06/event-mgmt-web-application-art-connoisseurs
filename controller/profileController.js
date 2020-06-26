@@ -14,28 +14,30 @@ router.use(session({
 console.log("Inside profile controller");
 
 router.get('/myConnections', async function(req, res) {
-  if (req.session.users == null || req.session.users == undefined) {
-        req.session.users = await userProfile.getConnections();
-
-  //random user selection
-  var randomUser = Math.round(Math.random());
-
-  //setting the selected user details in the session
-  req.session.userId = req.session.users[randomUser].userId;
-  req.session.userName = req.session.users[randomUser].firstName;
-  req.session.userConnections = await userConnectionDB.getUserProfile(req.session.userId);
-  console.log("default user connections");
-  console.log(req.session.userConnections);
-
-  //rendering the saved connections page
-  res.render('savedConnections', { userConnections: req.session.userConnections, userName: req.session.userName, loggedIn: (req.session.users) ? true: false});
-  }
-  else{
+  // if (req.session.users == null || req.session.users == undefined) {
+  //       req.session.users = await userProfile.getConnections();
+  //
+  // //random user selection
+  // var randomUser = Math.round(Math.random());
+  //
+  // //setting the selected user details in the session
+  // req.session.userId = req.session.users[randomUser].userId;
+  // req.session.userName = req.session.users[randomUser].firstName;
+  // req.session.userConnections = await userConnectionDB.getUserProfile(req.session.userId);
+  // console.log("default user connections");
+  // console.log(req.session.userConnections);
+  //
+  // //rendering the saved connections page
+  // res.render('savedConnections', { userConnections: req.session.userConnections, userName: req.session.userName, loggedIn: (req.session.users) ? true: false});
+  // }
+  // else{
     res.render('savedConnections', { userConnections: req.session.userConnections, userName: req.session.userName, loggedIn: (req.session.users) ? true: false} );
-  }
+  // }
 });
 
-router.get('/save', async function(req, res) {
+router.get('/save', async function(req, res){
+//redirects to savedConnections page if invalid changes are made to URL manually
+if(req.query.conId != null || req.query.rsvp != null){
   var conid = req.query.conId.toString();
   var rsvp = req.query.rsvp;
 
@@ -56,6 +58,9 @@ router.get('/save', async function(req, res) {
         req.session.userConnections = await userProfile.addConnection(conid, rsvp, req.session.userConnections, req.session.userId );
     }
     res.render('savedConnections', { userConnections: req.session.userConnections, userName: req.session.userName, loggedIn: (req.session.users) ? true: false});
+}else{
+  res.render('savedConnections', { userConnections: req.session.userConnections, userName: req.session.userName, loggedIn: (req.session.users) ? true: false});
+}
 });
 
 router.get('/update', async function(req, res){

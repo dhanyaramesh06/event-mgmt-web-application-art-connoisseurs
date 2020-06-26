@@ -4,7 +4,7 @@
 			<meta charset = "UTF-8">
 			<title>Create Connection</title>
 			<link rel="stylesheet" type="text/css" href="/assets/basicStyle.css">
-      <link rel="stylesheet" type="text/css" href="/assets/newConnection.css">
+			<link rel="stylesheet" type="text/css" href="/assets/newConnection.css">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		</head>
 		<body>
@@ -12,27 +12,31 @@
 			<% include partials/navigation.ejs %>
 
 			<main>
-        <div class = "form_section">
-          <form action = "/saveNewConnection" method = "POST">
-            Topic: <input type = "text" name = "topic" placeholder = "Topic">
-            <br><br>
-						Topic ID: <input type = "text" name = "topicId" placeholder = "ID">
-						<br><br>
-            Name: <input type = "text" name = "name" placeholder = "Name">
-            <br><br>
-            Details: <textarea name="details" rows="4" cols="40" placeholder="Description"></textarea>
-            <br><br>
-            Where: <input type = "text" name = "where" placeholder = "Location">
-            <br><br>
-            From: <input type="time" name="from"> - To: <input type="time" name="to">
-            <br><br>
-            When: <input type="date" name="when">
-            <br><br>
-						Hosted By: <input type="text" name="host" placeholder = "Host">
-            <br><br>
-            <input type="submit" value="Create Connection">
-          </form>
-        </div>
+				<div class = "content">
+					<div class = "form_section">
+          	<form action = "/saveNewConnection" method = "POST">
+							<label for = "topic">Topic:</label>
+          		<input type = "text" id = "topic" name = "topic" placeholder = "Category"> &nbsp;&nbsp; <label for = "topicid">Topic Id:</label><input type = "text" id = "topicid" name = "topicId" placeholder = "Connection Id"><br><br>
+							<label for = "name">Name:</label>
+          		<input type = "text" id = "name" name = "name" placeholder = "Connection Name"> &nbsp;&nbsp; <label for = "host">Host:</label> &nbsp;&nbsp; <input type = "text" id = "host" name = "host" placeholder = "Host"><br><br>
+							<label for = "when">When:</label>
+							<input type = "date" id = "when" name = "when"><br><br>
+							<label for = "where">Where:</label>
+							<input type = "text" id = "where" name = "where" placeholder = "Location"> <br><br>
+							<label for = "from">From:</label>
+							<input type = "time" id = "from" name = "from"> &nbsp; <label for = "to">To:</label> <input type = "time" id = "to" name = "to"><br><br>
+							<label for = "details">Details:</label>
+							<textarea id = "details" name="details" rows="4" cols="200" placeholder="Description"></textarea><br><br>
+            	<input type="submit" value="Create Connection">
+          	</form>
+					</div>
+					<div class = "errors">
+						<% if(error.length != 0){
+							error.forEach(function(item, index){ %>
+								<p> <%= item.msg %> </p> <br>
+						<% })} %>
+					</div>
+				</div>
       </main>
 
       <% include partials/footer.ejs %>

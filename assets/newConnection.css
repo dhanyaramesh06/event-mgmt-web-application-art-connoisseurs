@@ -4,10 +4,34 @@
   background-color: #e6e7e9;
   margin-top: 10px;
   padding: 5px;
-  float: right;
-  width: 95%;
+  float: left;
+  width: 60%;
   font-family: Bookman Old Style;
   justify-content: flex-start;
+  display: inline-block;
+}
+
+.errors {
+  background-color: #e6e7e9;
+  margin-top: 10px;
+  padding: 5px;
+  float: right;
+  width: 40%;
+  text-align: center;
+  align-items: center;
+  font-family: Bookman Old Style;
+  justify-content: center;
+  display: inline-block;
+  color: Red;
+}
+
+.form_section label {
+  margin: 5px 10px 5px 0;
+}
+
+p {
+  padding: 5px;
+  display: inline-block;
 }
 
 input[type=submit]{
@@ -19,8 +43,17 @@ input[type=submit]{
   box-sizing: border-box;
 }
 
-input[type=text],textarea {
+input[type=text] {
   width: 20%;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+textarea {
+  width: 50%;
   padding: 3px;
   border: 1px solid #ccc;
   border-radius: 4px;

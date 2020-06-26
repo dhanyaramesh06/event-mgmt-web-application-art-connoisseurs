@@ -1,7 +1,8 @@
-var user = function(uid, fname, lname, email, addr1, addr2, city, state, zip, country)
+var user = function(uid, pwd, fname, lname, email, addr1, addr2, city, state, zip, country)
 {
   var usermodel = {
     userId : '' + uid,
+    pwd : '' + pwd,
     firstName : '' + fname,
     lastName : '' + lname,
     emailAddress : '' + email,

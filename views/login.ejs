@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset = "UTF-8">
+			<title>Login</title>
+			<link rel="stylesheet" type="text/css" href="/assets/basicStyle.css">
+      <link rel="stylesheet" type="text/css" href="/assets/login.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		</head>
+		<body>
+      <% include partials/header.ejs %>
+			<% include partials/navigation.ejs %>
+
+			<main>
+        <div class = "login_form">
+					<br><br><br>
+          <h3> Account Login </h3>
+          <form action = "/loggedIn" method = "POST">
+            <i class = "fa fa-user"></i> <input type = "text" name = "uname" placeholder = "Username">
+            <br><br>
+						<i class = "fa fa-lock"></i> <input type = "password" name = "pwd" placeholder = "Password">
+						<br><br>
+						<% if(error.length != 0){
+									error.forEach(function(item, index){ %>
+						<p> <%= item.msg %> </p>
+						<% })} %>
+						<br><br>
+            <button class="submit"> Login </button>
+						<br><br><br><br>
+          </form>
+        </div>
+
+      </main>
+
+      <% include partials/footer.ejs %>
+		</body>
+
+	</html>

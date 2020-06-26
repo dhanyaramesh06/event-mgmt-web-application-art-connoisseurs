@@ -37,8 +37,12 @@ async function addConnection(conId, rsvp, userConnections, userId){
   console.log("Inside add connection");
   var con = await conObj.getConnection(conId);
   console.log(con);
-  await userConnectionDB.addRsvp(userId, con.id, con.name, con.category, rsvp );
-  var userConnections = await userConnectionDB.getUserProfile(userId);
+  //checking if conId is invalid -- can happen if any invalid changes made in URL manually
+  if(con != null || con != undefined){
+    await userConnectionDB.addRsvp(userId, con.id, con.name, con.category, rsvp );
+    var userConnections = await userConnectionDB.getUserProfile(userId);
+    return userConnections;
+  }
   return userConnections;
 }
 
@@ -54,8 +58,12 @@ async function removeConnection(userId, conId){
 async function updateConnection(conId, rsvp, userConnections, userId){
   console.log("Inside update connection");
   //console.log(`Connection id ${conId} updated`);
-  await userConnectionDB.updateRsvp(conId, userId, rsvp);
-  var userConnections = await userConnectionDB.getUserProfile(userId);
+  //checks if rsvp has any one of the three values -- if rsvp in URL is tampered manually changes will not be made
+  if(rsvp == "Yes" || rsvp == "No" || rsvp == "Maybe"){
+    await userConnectionDB.updateRsvp(conId, userId, rsvp);
+    var userConnections = await userConnectionDB.getUserProfile(userId);
+    return userConnections;
+  }
   return userConnections;
 }
 

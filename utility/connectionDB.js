@@ -25,12 +25,12 @@
 var connection = require('../models/connection')
 var mongoose = require('mongoose');
 var dateFormat = require('dateformat');
-mongoose.connect('mongodb://localhost/artConnoiseurs', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/artConnoisseurs', {useNewUrlParser: true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log("Connected to artConnoiseurs database");
+  console.log("Connected to artConnoisseurs database");
 });
 
 var connectionSchema = new mongoose.Schema({
@@ -71,9 +71,20 @@ async function addConnection(newCon){
   await newConnection.save();
 }
 
+async function checkConnection(newCon){
+  console.log("Inside check connection");
+  var con = await connections.find({"id": newCon.topicId});
+  console.log(con);
+  if(con.length == 0){
+    return true;
+  }
+  return false;
+}
+
 module.exports = {
     getConnection :getConnection,
     getConnections :getConnections,
     getCategory :getCategory,
-    addConnection :addConnection
+    addConnection :addConnection,
+    checkConnection :checkConnection
 }

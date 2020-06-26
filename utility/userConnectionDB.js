@@ -3,12 +3,12 @@ var userConn = require('../models/userConnection')
 var connectionDB = require('../utility/connectionDB')
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/artConnoiseurs', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/artConnoisseurs', {useNewUrlParser: true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log("Connected to artConnoiseurs database");
+  console.log("Connected to artConnoisseurs database");
 });
 
 var userConnectionSchema = new mongoose.Schema({

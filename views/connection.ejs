@@ -17,7 +17,8 @@
 						<h2><%= connection.name %></h2>
 
 						<div class = "topic_img">
-							<img src = "/assets/image/about_img.png" alt="image">
+							<img src = "/assets/image/default.gif" alt="image">
+								<!--<img src = "/assets/image/<%= connection.id %>.png" alt="image">-->
 						</div>
 
 						<div class = "topic_details">
@@ -35,9 +36,15 @@
 
 					<div class = "rsvp">
 						<h3> Are you going? </h3>
-						<button class = "yes" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=Yes'"> Yes </button>
-						<button class = "no" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=No'"> No </button>
-						<button class = "maybe" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=Maybe'"> Maybe </button>
+						<% if(loggedIn) { %>
+							<button class = "yes" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=Yes'"> Yes </button>
+							<button class = "no" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=No'"> No </button>
+							<button class = "maybe" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=Maybe'"> Maybe </button>
+						<% } else { %>
+							<button class = "yes" onclick="location.href='/login'"> Yes </button>
+							<button class = "no" onclick="location.href='/login'"> No </button>
+							<button class = "maybe" onclick="location.href='/login'"> Maybe </button>
+						<% } %>
 					</div>
 				</div>
 			</main>

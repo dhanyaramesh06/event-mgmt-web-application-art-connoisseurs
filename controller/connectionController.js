@@ -25,7 +25,12 @@ router.get('/connection', async function (req, res) {
     else{
         var result = await utility.getConnection(query.id);
         console.log(result);
-        res.render('connection', {connection:result, userName: req.session.userName, loggedIn:(req.session.users) ? true : false })
+        //redirects to Connections page if connection id is not valid -- can happen if URL is tampered manually
+        if(result == null || result == undefined){
+          res.redirect('/connections')
+        }else{
+          res.render('connection', {connection:result, userName: req.session.userName, loggedIn:(req.session.users) ? true : false })
+        }
     }
 });
 

@@ -18,16 +18,17 @@
 //userProfileObj.userProfile(1,2);
 var user = require('../models/user')
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/artConnoiseurs', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/artConnoisseurs', {useNewUrlParser: true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log("Connected to artConnoiseurs database");
+  console.log("Connected to artConnoisseurs database");
 });
 
 var userSchema = new mongoose.Schema({
     userId: {type: String},
+    password: {type: String},
     firstName: {type: String},
     lastName: {type: String},
     emailAddress: {type: String},
@@ -51,4 +52,14 @@ async function getUser(id){
     return oneUser;
 }
 
-module.exports = {getAllUsers, getUser};
+async function checkUser(user){
+  console.log("Inside check user");
+  var usr = await users.find({userId: user.uname, password: user.pwd});
+  console.log(usr);
+  if(usr.length == 0){
+    return false;
+  }
+  return true;
+}
+
+module.exports = {getAllUsers, getUser, checkUser};

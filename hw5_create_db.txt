@@ -1,0 +1,46 @@
+---- Switch to application's database ----
+use artConnoisseurs
+
+---- Create Collections ----
+db.createCollection("users")
+db.createCollection("connections")
+db.createCollection("userconnections")
+
+---- Create documents for user Collection ---
+try {
+   db.users.insertMany( [
+      { userId: "jroy2", password: "Hellojroy2", firstName: "Julio", lastName: "Roy", emailAddress: "jroy2@gmail.com", address1: "3956 Harry Place", address2: "", city: "Charlotte", state: "North Carolina", zipcode: "28202", country: "USA" },
+      { userId: "akaur1", password: "Helloakaur1", firstName: "Aayushi", lastName: "Kaur", emailAddress: "akaur1@gmail.com", address1: "1111 Marcus Ave", address2: "#M28", city: "New Hyde Park", state: "New York", zipcode: "11042", country: "USA" }
+   ] );
+} catch (e) {
+   print (e);
+}
+
+---- Create documents for connections Collection ---
+try {
+   db.connections.insertMany( [
+      { id: "course1", name: "Artist Guild - Fine Arts", category: "Courses", details: "We awaken the inner artist in you to rise and give shape to your thoughts, interpretations and expressions through the world of Fine Art. We provide you the apt forum to learn drawing and painting in your own unique style.", location: "AC-R-01", date: "Wednesday, October 23,2019", fromTime: "10:30am", toTime: "12:30pm", hostedBy: "Indiana Robert" },
+      { id: "course2", name: "Moulding Soul into the Clay - Pottery", category: "Courses", details: "Experience the beauty of Pottery with The Art Connoisseurs and learn to create wonders with clay!", location: "AC-R-02", date: "Tuesday, October 22,2019", fromTime: "10:30am", toTime: "1:00pm", hostedBy: "Mick Blake" },
+      { id: "course3", name: "Sculptors Hut - Sculpting", category: "Courses", details: "An art form that is three dimensional in nature, one that lets you give life to your imagination with your hands and gives you a sense of pure creation - that is art of Sculpting.", location: "AC-R-03", date: "Saturday, October 26,2019", fromTime: "3:00pm", toTime: "5:00pm", hostedBy: "Anish Kapoor" },
+      { id: "course4", name: "The Touch of Tradition - Tanjore Painting", category: "Courses", details: "The ancient art of Tanjore Painting symbolizes the grandeur and splendour of gold, fused with skillful expression of an artist. It is one of the most beautiful forms of art, with its roots tracing back to many centuries. Learning this art is your chance to revisit our cultural heritage and tradition.", location: "AC-R-04", date: "Thursday, October 26,2019", fromTime: "1:00pm", toTime: "4:00pm", hostedBy: "Sadiv" },
+      { id: "course5", name: "Clay Smith - Terracotta Jewellery Making", category: "Courses", details: "Create your own fashion statement with beautiful, colorful jewellery, delicately hand crafted by you! With this course you get a double benefit - you learn a new and exciting art form, plus you get to wear your own creations!", location: "AC-R-05", date: "Monday, October 28,2019", fromTime: "10:30am", toTime: "2:00pm", hostedBy: "Aikyaa" },
+      { id: "workshop1", name: "LIVE Portrait Sketching Workshop", category: "Workshops", details: "Presenting Live Portrait Sketching Workshop for all artists and budding artists! Here is a great opportunity for you to hone and develop your live portrait sketching skills.", location: "Charlotte Convention Center", date: "Sunday, November 3,2019", fromTime: "9:00am", toTime: "3:30pm", hostedBy: "Paul Cadden" },
+      { id: "workshop2", name: "Pottery and Clay Crafting Camps", category: "Workshops", details: "Bored of the usual routine? Looking to give yourself an innovative experience? The Art Connoisseurs has the perfect solution for you. Introducing a unique stress buster, one that will make you explore your inner artists - Pottery & Clay Crafting.", location: "Charlotte Convention Center", date: "Friday, November 1,2019", fromTime: "9:30am", toTime: "6:00pm", hostedBy: "Jim Deason" },
+      { id: "workshop3", name: "Tanjore Painting Workshop", category: "Workshops", details: "Tanjore Paintings are magnificent artwork depicting the various tales of Hindu deities. The artwork invoke the feelings of surrendering to the supremacy of the divine. The calming facial expressions in the art piece renders a sense of blessing to the one's bowing with respect.", location: "Charlotte Convention Center", date: "Thursday, November 7,2019", fromTime: "9:30am", toTime: "7:30pm", hostedBy: "Sadiv" },
+      { id: "workshop4", name: "Art Cubs - Creative Hunt", category: "Workshops", details: "Art Cubs is a venture by The Art Connoisseurs to spike interest in art among young children. At their budding age, our courses will help develop their motor skills, patience and overall personalities. When the creativity of children is tapped at an early age, they have the opportunity of understanding the different nuances in the world of art and can choose to take it up as a hobby or professionally later in their lives.", location: "Charlotte Convention Center", date: "Saturday, November 2,2019", fromTime: "9:30am", toTime: "4:00pm", hostedBy: "Gogi Saroj" }
+   ] );
+} catch (e) {
+   print (e);
+}
+
+---- Create documents for userconnections Collection ---
+try {
+   db.userconnections.insertMany( [
+      { userId: "jroy2", conId: "course1", conName: "Artist Guild - Fine Arts", category: "Courses", rsvp: "Yes" },
+      { userId: "jroy2", conId: "workshop1", conName: "LIVE Portrait Sketching Workshop", category: "Workshops", rsvp: "Maybe" },
+      { userId: "akaur1", conId: "course4", conName: "The Touch of Tradition - Tanjore Painting", category: "Courses", rsvp: "Maybe" },
+      { userId: "akaur1", conId: "workshop3", conName: "Tanjore Painting Workshop", category: "Workshops", rsvp: "No" }
+   ] );
+} catch (e) {
+   print (e);
+}
