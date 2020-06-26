@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.image_section iframe{
+  width: 375px;
+  height: 310px;
+  frameborder: 0px;
+  style: border:0px;
+}

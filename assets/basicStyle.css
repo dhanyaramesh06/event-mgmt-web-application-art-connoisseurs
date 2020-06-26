@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+footer, header, main, nav, section, div {
+  display: block;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+  height:100%;
+}
+ h1, ul, li, a, p, footer, header, main, nav, section, div {
+  margin: 0;
+  padding: 0;
+
+}
+
+header{
+	background-color: #000000;
+	width: 100%;
+	display: flex;
+}
+
+.logo{
+  background-color: #000000;
+  margin-top: 10px;
+  padding: 5px;
+  float: left;
+  width: 30%;
+}
+
+.name{
+  background-color: #000000;
+  padding: 5px;
+  width: 70%;
+}
+
+.banner {
+  background-color: #000000;
+  color: white;
+  margin-top: 60px;
+  padding: 5px 15px;
+  font-family: Chiller;
+  font-size: 70px;
+}
+
+body {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #e6e7e9;
+}
+
+.user_nav_back{
+  clear: both;
+  background-color: #000000;
+  color: black;
+  padding: 5px;
+  margin-top: 1px;
+  font-family: Arial Narrow;
+  font-size: 15px;
+  float: right;
+  width:100%;
+}
+
+.user_nav_back a img{
+	height: 100px;
+	width: 100px;
+}
+
+.user_specific_nav {
+  clear: both;
+  background-color: #000000;
+  color: white;
+  padding: 5px;
+  margin-top: -143px;
+  font-family: Arial Narrow;
+  font-size: 15px;
+  float: right;
+}
+
+.general_nav{
+	clear: both;
+	background-color: #000000;
+	color: white;
+	padding: 5px;
+	margin-top: 1px;
+	font-family: Arial Narrow;
+	font-size: 15px;
+}
+
+li a{
+	text-decoration: none;
+	color: black;
+}
+
+li p{
+  float: right;
+}
+
+.ul_inline li{
+  display: inline;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.ul_inline li a{
+	color: white;
+}
+
+.intro_section {
+  background-color: #e6e7e9;
+  margin-top: 10px;
+  padding: 5px;
+  float: right;
+  width: 70%;
+  font-family: Bookman Old Style;
+  justify-content: center;
+}
+
+.image_section {
+	background-color: #e6e7e9;
+	margin-top: 10px;
+	padding: 5px;
+	float: left;
+	width: 30%;
+}
+
+.image_section img{
+	height: 270px;
+	width: 385px;
+}
+
+.content {
+	width: 100%;
+	background-color: #e6e7e9;
+	margin:0;
+	height: 356px;
+	display: flex;
+}
+
+main {
+  margin:0;
+  width: 100%;
+  background-color: #e6e7e9;
+  font-family: Bookman Old Style;
+}
+
+.ul_style{
+	list-style: none;
+}
+
+footer {
+	clear : both;
+	background-color: #000000;
+	color: white;
+	padding: 5px 20px;
+}
+
+footer li a{
+	float: right;
+	margin-right: 15px;
+}

@@ -1,0 +1,91 @@
+{
+    "courses": {
+        "connections": [
+            {
+                "id": "course1",
+                "connection_name": "Artist Guild - Fine Arts",
+                "hosted_by": "Indiana Robert",
+                "date": "Wednesday, October 23,2019",
+                "time": "10:30am - 12:30pm",
+                "location":"AC-R-01",
+                "details": "We awaken the inner artist in you to rise and give shape to your thoughts, interpretations and expressions through the world of Fine Art. We provide you the apt forum to learn drawing and painting in your own unique style."
+            },
+            {
+                "id": "course2",
+                "connection_name": "Moulding Soul into the Clay - Pottery",
+                "hosted_by": "Mick Blake",
+                "date": "Tuesday, October 22,2019",
+                "time": "10:30am - 1:00pm",
+                "location":"AC-R-02",
+                "details": "Experience the beauty of Pottery with The Art Connoisseurs and learn to create wonders with clay!"
+            },
+            {
+                "id": "course3",
+                "connection_name": "Sculptors Hut - Sculpting",
+                "hosted_by": "Anish Kapoor",
+                "date": "Saturday, October 26,2019",
+                "time": "3:00pm - 5:00pm",
+                "location": "AC-R-03",
+                "details": "An art form that is three dimensional in nature, one that lets you give life to your imagination with your hands and gives you a sense of pure creation - that is art of Sculpting."
+            },
+            {
+                "id": "course4",
+                "connection_name": "The Touch of Tradition - Tanjore Painting",
+                "hosted_by": "Sadiv",
+                "date": "Thursday, October 26,2019",
+                "time": "1:00pm - 4:00pm",
+                "location":"AC-R-04",
+                "details": "The ancient art of Tanjore Painting symbolizes the grandeur and splendour of gold, fused with skillful expression of an artist. It is one of the most beautiful forms of art, with its roots tracing back to many centuries. Learning this art is your chance to revisit our cultural heritage and tradition."
+            },
+            {
+                "id": "course5",
+                "connection_name": "Clay Smith - Terracotta Jewellery Making",
+                "hosted_by": "Aikyaa",
+                "date": "Monday, October 28,2019",
+                "time": "10:30am - 2:00pm",
+                "location":"AC-R-05",
+                "details": "Create your own fashion statement with beautiful, colorful jewellery, delicately hand crafted by you! With this course you get a double benefit - you learn a new and exciting art form, plus you get to wear your own creations!"
+            }
+        ]
+    },
+    "workshops": {
+        "connections": [
+            {
+                "id": "workshop1",
+                "connection_name": "LIVE Portrait Sketching Workshop",
+                "hosted_by": "Paul Cadden",
+                "date": "Sunday, November 3,2019",
+                "time": "9:00am - 3:30pm",
+                "location":"Charlotte Convention Center",
+                "details": "Presenting Live Portrait Sketching Workshop for all artists and budding artists! Here is a great opportunity for you to hone and develop your live portrait sketching skills."
+            },
+            {
+                "id": "workshop2",
+                "connection_name": "Pottery and Clay Crafting Camps",
+                "hosted_by": "Jim Deason",
+                "date": "Friday, November 1,2019",
+                "time": "9:30am - 6:00pm",
+                "location":"Charlotte Convention Center",
+                "details": "Bored of the usual routine? Looking to give yourself an innovative experience? The Art Connoisseurs has the perfect solution for you. Introducing a unique stress buster, one that will make you explore your inner artists - Pottery & Clay Crafting."
+            },
+            {
+                "id": "workshop3",
+                "connection_name": "Tanjore Painting Workshop",
+                "hosted_by": "Sadiv",
+                "date": "Thursday, November 7,2019",
+                "time": "9:30am - 7:30pm",
+                "location":"Charlotte Convention Center",
+                "details": "Tanjore Paintings are magnificent artwork depicting the various tales of Hindu deities. The artwork invoke the feelings of surrendering to the supremacy of the divine. The calming facial expressions in the art piece renders a sense of blessing to the one's bowing with respect."
+            },
+            {
+                "id": "workshop4",
+                "connection_name": "Art Cubs - Creative Hunt",
+                "hosted_by": "Gogi Saroj",
+                "date": "Saturday, November 2,2019",
+                "time": "9:30am - 4:00pm",
+                "location":"Charlotte Convention Center",
+                "details": "Art Cubs is a venture by The Art Connoisseurs to spike interest in art among young children. At their budding age, our courses will help develop their motor skills, patience and overall personalities. When the creativity of children is tapped at an early age, they have the opportunity of understanding the different nuances in the world of art and can choose to take it up as a hobby or professionally later in their lives."
+            }
+        ]
+    }
+}

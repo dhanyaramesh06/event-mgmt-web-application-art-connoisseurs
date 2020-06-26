@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.form_section {
+  background-color: #e6e7e9;
+  margin-top: 10px;
+  padding: 5px;
+  float: right;
+  width: 95%;
+  font-family: Bookman Old Style;
+  justify-content: flex-start;
+}
+
+input[type=submit]{
+  background-color: #000000;
+  color: white;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=text],textarea {
+  width: 20%;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+input[type=date]{
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+input[type=time]{
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}

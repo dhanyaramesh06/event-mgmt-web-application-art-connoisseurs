@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset = "UTF-8">
+			<title>Connection</title>
+			<link rel="stylesheet" type="text/css" href="/assets/basicStyle.css">
+			<link rel="stylesheet" type="text/css" href="/assets/connectionStyle.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		</head>
+		<body>
+			<% include partials/header.ejs %>
+			<% include partials/navigation.ejs %>
+
+			<main>
+				<div class = "content">
+					<div class = "topic">
+						<!--<h2> Pottery & Clay Crafting Camps </h2>-->
+						<h2><%= connection.connection_name %></h2>
+
+						<div class = "topic_img">
+							<img src = "/assets/image/pottery.png" alt="pottery">
+						</div>
+
+						<div class = "topic_details">
+							<!--<p> Hosted by: Jim Deason <br>
+							Friday, October 4, 2019 to Sunday, October 6, 2019 <br>
+							8:00am - 7:30pm <br>
+							Charlotte Convention Center </p>-->
+							Hosted By : <%= connection.hosted_by %><br>
+							<%= connection.date%><br>
+              <%= connection.time%><br>
+              <%= connection.location%><br>
+						</div>
+
+						<div class = "desc">
+							<h3> Details </h3>
+							<!--<p> Bored of the usual routine? Looking to give yourself an innovative experience?
+							The Art Connoisseurs has the perfect solution for you.Introducing a unique stress buster,
+							one that will make you explore your inner artists – Pottery & Clay Crafting. </p>-->
+							<%= connection.details %>
+						</div>
+					</div>
+
+					<div class = "rsvp">
+						<h3> Are you going? 5 people going </h3>
+						<button class = "yes" onclick="location.href='savedConnections'"> Yes </button>
+						<button class = "no" onclick="location.href='savedConnections'"> No </button>
+						<button class = "maybe" onclick="location.href='savedConnections'"> Maybe </button>
+					</div>
+				</div>
+			</main>
+
+			<% include partials/footer.ejs %>
+		</body>
+	</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset = "UTF-8">
+			<title>Saved Connections</title>
+			<link rel="stylesheet" type="text/css" href="/assets/basicStyle.css">
+			<link rel="stylesheet" type="text/css" href="/assets/savedConnectionsStyle.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		</head>
+		<body>
+			<% include partials/header.ejs %>
+			<% include partials/navigation.ejs %>
+
+			<main>
+				<div class = "content">
+					<div class = "who_connection">
+						<h2> Jim Deason's Connections </h2>
+					</div>
+					<div class ="tab">
+					<table>
+						<thead>
+							<tr>
+								<th> Connection </th>
+								<th> Category </th>
+								<th> Going? </th>
+								<th>  </th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td> Pottery & Clay Crafting Camps </td>
+							<td> Workshop </td>
+							<td> Yes </td>
+							<td>
+								<button class = "update" onclick="location.href='connection'"> Update </button>
+								<button class = "delete" onclick="location.href='savedConnections'"> Delete </button>
+							</td>
+						</tr>
+						<tr>
+							<td> Moulding Soul into the Clay - Pottery </td>
+							<td> Course </td>
+							<td> Maybe </td>
+							<td>
+								<button class = "update" onclick="location.href='connection'"> Update </button>
+								<button class = "delete" onclick="location.href='savedConnections'"> Delete </button>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</main>
+
+			<% include partials/footer.ejs %>
+		</body>
+	</html>
