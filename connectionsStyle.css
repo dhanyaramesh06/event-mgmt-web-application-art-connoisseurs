@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.courses{
+  background-color: #e6e7e9;
+  margin-top: 10px;
+  padding: 5px;
+  float: left;
+  width: 50%;
+  font-family: Bookman Old Style;
+  text-align: center;
+}
+
+.workshops{
+  background-color: #e6e7e9;
+  margin-top: 10px;
+  padding: 5px;
+  float: right;
+  width: 50%;
+  font-family: Bookman Old Style;
+  text-align: center;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset = "UTF-8">
+			<title>Saved Connections</title>
+			<link rel="stylesheet" type="text/css" href="basicStyle.css">
+			<link rel="stylesheet" type="text/css" href="savedConnectionsStyle.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		</head>
+		<body>
+			<header>
+				<div class="logo">
+					<a href="index.html">
+					<img src = "logo.png" alt="logo"> </a>	
+				</div>
+				<div class="name">
+					<h1 class ="banner"> The Art Connoisseurs </h1>				
+					<nav class ="user_specific_nav">
+						<ul class = "ul_inline">
+							<li>Start a connection</li>
+							<li><a href="savedConnections.html">Login</a></li>
+							<li><a href="savedConnections.html">Sign up</a></li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			
+			<div class="user_nav_back">
+			<nav class ="general_nav">
+				<ul class = "ul_inline">
+					<li><a href="connections.html">Connections</a></li>
+					<li>About</li>
+				</ul>
+			</nav>
+			</div>
+			
+			<main>
+				<div class = "content">
+					<div class = "who_connection">
+						<h2> Jim Deason's Connections </h2>
+					</div>
+					<div class ="tab">
+					<table>
+						<thead>
+							<tr>
+								<th> Connection </th>
+								<th> Category </th>
+								<th> Going? </th>
+								<th>  </th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td> Pottery & Clay Crafting Camps </td>
+							<td> Workshop </td>
+							<td> Yes </td>
+							<td> 
+								<button class = "update" onclick="location.href='connection.html'"> Update </button>
+								<button class = "delete" onclick="location.href='savedConnections.html'"> Delete </button>
+							</td>
+						</tr>
+						<tr>
+							<td> Moulding Soul into the Clay - Pottery </td>
+							<td> Course </td>
+							<td> Maybe </td>
+							<td> 
+								<button class = "update" onclick="location.href='connection.html'"> Update </button>
+								<button class = "delete" onclick="location.href='savedConnections.html'"> Delete </button>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			
+			</main>
+			
+			<footer>
+				<ul class = "ul_inline">
+					<li>&copy;Copyright 2011 The Art Connoisseurs</li>
+					<li>Contact</li>
+					<li><a href="#" class="fa fa-youtube"></a></li>
+					<li><a href="#" class="fa fa-pinterest"></a></li>
+					<li><a href="#" class="fa fa-facebook"></a></li>
+					<li><a href="#" class="fa fa-twitter"></a></li>
+				</ul>
+			</footer>
+		</body>
+	</html>

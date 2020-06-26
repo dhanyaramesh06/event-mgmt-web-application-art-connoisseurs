@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.who_connection h2{
+	margin-left: 130px;
+}
+
+.tab{
+	margin-top: 70px;
+	margin-left: -130px;
+}
+
+.tab table{
+	border-collapse: collapse;
+}
+
+table, th,td {
+  border: 1px solid black;
+  padding: 10px 15px;
+  width: auto;
+}
+
+th {
+	height: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.update{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delete{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
