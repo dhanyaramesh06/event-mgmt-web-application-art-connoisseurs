@@ -14,7 +14,7 @@
 			<main>
 				<div class = "content">
 					<div class = "who_connection">
-						<h2> Jim Deason's Connections </h2>
+						<h2> <%= userName %>'s Connections </h2>
 					</div>
 					<div class ="tab">
 					<table>
@@ -27,24 +27,17 @@
 							</tr>
 						</thead>
 						<tbody>
+							<% for(var i = 0; i < userConnections.length; i++) { %>
 						<tr>
-							<td> Pottery & Clay Crafting Camps </td>
-							<td> Workshop </td>
-							<td> Yes </td>
+							<td> <%= userConnections[i].conName %> </td>
+							<td> <%= userConnections[i].category %> </td>
+							<td> <%= userConnections[i].rsvp %> </td>
 							<td>
-								<button class = "update" onclick="location.href='connection'"> Update </button>
-								<button class = "delete" onclick="location.href='savedConnections'"> Delete </button>
+								<button class = "update" onclick="location.href='/connection?id=<%= userConnections[i].conId%>'"> Update </button>
+								<button class = "delete" onclick="location.href='/savedConnections/remove?conId=<%= userConnections[i].conId %>'"> Delete </button>
 							</td>
 						</tr>
-						<tr>
-							<td> Moulding Soul into the Clay - Pottery </td>
-							<td> Course </td>
-							<td> Maybe </td>
-							<td>
-								<button class = "update" onclick="location.href='connection'"> Update </button>
-								<button class = "delete" onclick="location.href='savedConnections'"> Delete </button>
-							</td>
-						</tr>
+							<% } %>
 						</tbody>
 					</table>
 					</div>

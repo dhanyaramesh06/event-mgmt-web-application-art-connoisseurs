@@ -14,38 +14,30 @@
 			<main>
 				<div class = "content">
 					<div class = "topic">
-						<!--<h2> Pottery & Clay Crafting Camps </h2>-->
-						<h2><%= connection.connection_name %></h2>
+						<h2><%= connection.name %></h2>
 
 						<div class = "topic_img">
-							<img src = "/assets/image/pottery.png" alt="pottery">
+							<img src = "<%= connection.image %>" alt="image">
 						</div>
 
 						<div class = "topic_details">
-							<!--<p> Hosted by: Jim Deason <br>
-							Friday, October 4, 2019 to Sunday, October 6, 2019 <br>
-							8:00am - 7:30pm <br>
-							Charlotte Convention Center </p>-->
-							Hosted By : <%= connection.hosted_by %><br>
-							<%= connection.date%><br>
-              <%= connection.time%><br>
-              <%= connection.location%><br>
+							Hosted By : <%= connection.hostedBy %><br>
+							Date : <%= connection.date%><br>
+              Time : <%= connection.fromTime + " - " + connection.toTime %><br>
+              Location : <%= connection.location%><br>
 						</div>
 
 						<div class = "desc">
 							<h3> Details </h3>
-							<!--<p> Bored of the usual routine? Looking to give yourself an innovative experience?
-							The Art Connoisseurs has the perfect solution for you.Introducing a unique stress buster,
-							one that will make you explore your inner artists – Pottery & Clay Crafting. </p>-->
 							<%= connection.details %>
 						</div>
 					</div>
 
 					<div class = "rsvp">
-						<h3> Are you going? 5 people going </h3>
-						<button class = "yes" onclick="location.href='savedConnections'"> Yes </button>
-						<button class = "no" onclick="location.href='savedConnections'"> No </button>
-						<button class = "maybe" onclick="location.href='savedConnections'"> Maybe </button>
+						<h3> Are you going? </h3>
+						<button class = "yes" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=Yes'"> Yes </button>
+						<button class = "no" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=No'"> No </button>
+						<button class = "maybe" onclick="location.href='/savedConnections/save?conId=<%= connection.id %>&rsvp=Maybe'"> Maybe </button>
 					</div>
 				</div>
 			</main>

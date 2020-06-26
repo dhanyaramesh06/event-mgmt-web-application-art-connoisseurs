@@ -13,12 +13,14 @@
 
 			<main>
 				<div class = "content">
+					<% category.forEach(function(item,index){ %>
 					<div class="courses">
-						<h2> Courses </h2>
+						<h2> <%= item %> </h2>
 						<ul class = "ul_style">
-							<% connections.courses.forEach(function(item,index){ %>
-								<li><a href="/connection?id=<%= item.id %>"><%= item.connection_name %> </a></li>
-							<% }); %>
+							<% connections.forEach(function(element,index){
+								if(element.category == item){ %>
+								<li><a href="/connection?id=<%= element.id %>"><%= element.name %> </a></li>
+							<% }}); %>
 							<!--<li><a href="connection"> Artist Guild - Fine Arts </a></li>
 							<li><a href="connection"> Moulding Soul into the Clay - Pottery</a> </li>
 							<li><a href="connection"> Sculptors Hut - Sculpting</a> </li>
@@ -26,19 +28,7 @@
 							<li><a href="connection"> Clay Smith - Terracotta Jewellery Making</a> </li>-->
 						</ul>
 					</div>
-
-					<div class = "workshops">
-						<h2> Workshops </h2>
-						<ul class = "ul_style">
-							<% connections.workshops.forEach(function(item, index){ %>
-								<li><a href="/connection?id=<%= item.id %>"><%= item.connection_name %> </a></li>
-							<% }); %>
-							<!--<li><a href="connection"> LIVE Portrait Sketching Workshop </a></li>
-							<li><a href="connection"> Pottery & Clay Crafting Camps </a></li>
-							<li><a href="connection"> Tanjore Painting Workshop </a></li>
-							<li><a href="connection"> Art Cubs - Creative Hunt </a></li>-->
-						</ul>
-					</div>
+					<% }); %>
 				</div>
 			</main>
 

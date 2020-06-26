@@ -1,10 +1,12 @@
 <div class="user_nav_back">
 	<nav class ="general_nav">
 		<ul class = "ul_inline">
-			<li><a href="connections">Connections</a></li>
-			<li><a href="about">About Us</a></li>
-			<li><a href="contact">Contact Us</a></li>
-			<li><p>Welcome User!</p></li>
+			<li><a href="/connections">Connections</a></li>
+			<li><a href="/about">About Us</a></li>
+			<li><a href="/contact">Contact Us</a></li>
+			<% if(loggedIn){ %>
+				<li><p>Welcome <%= userName %></p></li>
+			<% } %>
 		</ul>
 	</nav>
 </div>

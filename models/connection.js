@@ -1,16 +1,18 @@
-var connection = function(conID, conName, conTopic, conDetails, conLocation, conDate, conFromTime, conToTime)
+var connection = function(conID, conName, conCategory, conDetails, conLocation, conDate, conFromTime, conToTime, conHostedBy, img)
 {
-  var model = {
-    connectionID : '' + conID,
-    connectionName : '' + conName,
-    connectionTopic : '' + conTopic,
-    connectionDetails : '' + conDetails,
-    connectionLocation : '' + conLocation,
-    connectionDate : '' + conDate,
-    connectionTime : '' + conFromTime + '-' + conToTime,
-    connectionHostedBy : 'User'
+  var conModel = {
+    id : '' + conID,
+    name : '' + conName,
+    category : '' + conCategory,
+    details : '' + conDetails,
+    location : '' + conLocation,
+    date : '' + conDate,
+    fromTime : '' + conFromTime,
+    toTime : '' + conToTime,
+    hostedBy : '' + conHostedBy,
+    image : img
   }
-  return model;
+  return conModel;
 }
 
 module.exports.connectionModel = connection
